@@ -247,7 +247,7 @@ jobs:
             echo ${PUBLIC_DNS} >> ./inventory
             cat ./inventory
       - add_ssh_keys:
-          fingerprints: ["f2:e7:96:70:ce:5d:29:68:ec:2d:1d:33:71:52:8b:05"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
+          fingerprints: ["67:6d:bd:de:bc:84:db:d8:53:50:2d:79:08:04:2a:5c"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
       - run:
           name: Configure server via ansible to deploy the backend
           command: |
