@@ -311,16 +311,11 @@ jobs:
               return 1
             fi
       - run:
-          name: Smoke test on backend
+          name: Backend smoke test.
+          working_directory: ./backend
           command: |
-            PUBLIC_DNS=$(curl -H "token: 57cb08c6-f091-400f-b9ea-7a5ad467bfeb" --request GET https://api.memstash.io/values/public_dns)
-            echo ${PUBLIC_DNS}
-            if curl -s "http://${PUBLIC_DNS}:3030/api/status" | grep "ok"
-            then
-              return 0
-            else
-              return 1
-            fi
+            export BACKEND_URL=$(curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/BACKEND_URL)
+            curl "$BACKEND_URL/api/status"
       - revert-migration
       - destroy-aws-resource
       - slack/status
