@@ -57,7 +57,7 @@ commands:
 parameters:
   circleci_image:
     type: string
-    default: circleci/node:13.8.0
+    default: circleci/node:latest
   py_alp_image:
     type: string
     default: python:3.7-alpine3.11
@@ -186,15 +186,15 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
-      - run:
-          name: Delete all S3 buckets whose names start with 'udapeople-s3bucket-'
-          command: |
-            OLD_BUCKET=$(aws s3api list-buckets --query "Buckets[?starts_with(Name, 'udapeople-s3bucket-')].Name" --output text)
-            for bucket in ${OLD_BUCKET}
-            do
-                echo deleting bucket $bucket
-                aws s3 rb --force s3://$bucket
-            done
+      # - run:
+      #     name: Delete all S3 buckets whose names start with 'udapeople-s3bucket-'
+      #     command: |
+      #       OLD_BUCKET=$(aws s3api list-buckets --query "Buckets[?starts_with(Name, 'udapeople-s3bucket-')].Name" --output text)
+      #       for bucket in ${OLD_BUCKET}
+      #       do
+      #           echo deleting bucket $bucket
+      #           aws s3 rb --force s3://$bucket
+      #       done
       - run:
           name: Create/Update frontend infrastructure via AWS CloudFormation
           command: |
@@ -247,7 +247,7 @@ jobs:
             echo ${PUBLIC_DNS} >> ./inventory
             cat ./inventory
       - add_ssh_keys:
-          fingerprints: ["e1:b1:84:d0:8d:71:36:6b:f0:d7:a3:52:55:b9:63:c7"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
+          fingerprints: ["f2:e7:96:70:ce:5d:29:68:ec:2d:1d:33:71:52:8b:05"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
       - run:
           name: Configure server via ansible to deploy the backend
           command: |

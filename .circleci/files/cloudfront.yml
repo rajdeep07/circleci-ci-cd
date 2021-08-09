@@ -1,6 +1,5 @@
 Description: >
   CloudFront distribution for Udapeople
-
 Parameters:
   ID:
     Description: Unique identifier
