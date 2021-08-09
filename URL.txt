@@ -1,0 +1,14 @@
+Public Url to GitHub repository [URL01]
+https://github.com/rajdeep07/circleci-ci-cd.git
+
+Public URL for your S3 Bucket [URL02]
+http://udapeople-s3bucket-38f99668-ce18-41ac-918b-49b69db2d39b.s3-website-us-west-2.amazonaws.com
+
+Public URL for your CloudFront distribution [URL03]
+http://d2e9yw930jyjka.cloudfront.net/
+
+Public URLs to deployed application back-end in EC2 [URL04]
+https://ec2-52-43-55-212.us-west-2.compute.amazonaws.com:3030/
+
+Public URL to your Prometheus Server [URL05]
+http://ec2-52-43-55-212.us-west-2.compute.amazonaws.com:9090/
