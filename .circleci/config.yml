@@ -249,11 +249,11 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["e1:b1:84:d0:8d:71:36:6b:f0:d7:a3:52:55:b9:63:c7"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
       - run:
-          name: Configure server via ansible to deploy the backend
+          name: Deploy backend
+          working_directory: ./.circleci/ansible
           command: |
-            printenv >> ./backend/.env
-            cd .circleci/ansible/
-            ansible-playbook -i ./inventory deploy.yml
+            cat inventory
+            ansible-playbook -i inventory deploy-backend.yml -vv
       - revert-migration
       - destroy-aws-resource
       - slack/status
