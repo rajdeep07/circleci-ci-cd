@@ -248,12 +248,12 @@ jobs:
             cat ./inventory
       - add_ssh_keys:
           fingerprints: ["f2:e7:96:70:ce:5d:29:68:ec:2d:1d:33:71:52:8b:05"] # get it from CircleCI -> Project Settings -> SSH Keys -> Additional SSH Keys
-      #- run:
-      #    name: Configure server via ansible to deploy the backend
-      #    command: |
-      #      printenv >> ./backend/.env
-      #      cd .circleci/ansible/
-      #      ansible-playbook -i ./inventory deploy.yml
+      - run:
+          name: Configure server via ansible to deploy the backend
+          command: |
+            printenv >> ./backend/.env
+            cd .circleci/ansible/
+            ansible-playbook -i ./inventory deploy.yml
       - revert-migration
       - destroy-aws-resource
       - slack/status
