@@ -310,12 +310,12 @@ jobs:
             else
               return 1
             fi
-      - run:
-          name: Backend smoke test.
-          working_directory: ./backend
-          command: |
-            export BACKEND_URL=$(curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/BACKEND_URL)
-            curl "$BACKEND_URL/api/status"
+      #- run:
+      #    name: Backend smoke test.
+      #    working_directory: ./backend
+      #    command: |
+      #      export BACKEND_URL=$(curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/BACKEND_URL)
+      #      curl "$BACKEND_URL/api/status"
       - revert-migration
       - destroy-aws-resource
       - slack/status
